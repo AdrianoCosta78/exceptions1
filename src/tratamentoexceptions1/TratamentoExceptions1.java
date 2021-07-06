@@ -38,29 +38,19 @@ public class TratamentoExceptions1 {
                 System.out.print("Data do Check-out: ");
                 checkOut = sdf.parse(sc.next());
                 
-                Date agora = new Date();
-                if (checkIn.before(agora)|| checkOut.before(agora)){
-                    System.out.println("Erro na reserva: A data informada não pode ser anterior a data de reserva");
-                }else if(!checkOut.after(checkIn)){
-                    System.out.println("Erro na reserva: Data de check-out menor que a data de check-in.");
-                    
-                }else{
-                     reserva.updateDate(checkIn, checkOut);
-                     System.out.println("Reserva: "+ reserva);
+               
+                String error = reserva.updateDate(checkIn, checkOut);
+                if(error != null){
+                    System.out.println("Error na reserva: "+ error);
+                }  
+                else{
+                    System.out.println("Reserva: "+ reserva);
                 }
-               
-                        
-               
+                         
             }
-            
-            
-            
-          
-            
+                 
             sc.close();
-            
-        
-                
+                  
     }
 }
     
